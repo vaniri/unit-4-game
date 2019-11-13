@@ -6,24 +6,22 @@ class Round {
         $('#your_char').append(character.unitElem);
         for (let unit of enemies) { $('#enemies').append(unit.unitElem); }
         let choseEnemy = $('<h2></h2>');
-        choseEnemy.text("Click to select an enemy!");
-        $('.game_section').append(choseEnemy);
-
+        userInteraction("Click to select an enemy!")
     }
 
     handleUnitClick(unit) {
         if (unit == this.character) {
-            console.log("dumb!");
+            userInteraction("dumb!");
         } else if (!this.defender) {
             this.defender = unit;
             $('#defender').append(unit.unitElem);
         } else if (unit == this.defender) {
             this.handleAttack();
-        } else { console.log("enemy chosen!"); }
+        } else { userInteraction("enemy chosen!"); }
     }
 
     handleAttack() {
-        console.log("points");
+        userInteraction("points");
         this.character.health -= this.defender.attackPoints;
         this.defender.health -= this.character.attackPoints;
         if (this.character.health <= 0) {
@@ -33,8 +31,8 @@ class Round {
             this.defender.unitElem.remove();
             this.defender = null;
             if (this.enemies.length !== 0) {
-                console.log("choose new enemy");
-            } else { console.log("You won!"); }
+                userInteraction("choose new enemy");
+            } else { userInteraction("You won!"); }
         }
     }
 
@@ -73,5 +71,9 @@ function startGame() {
 
         });
     }
+}
+
+function userInteraction (text) {
+    $("#text").text(text);
 }
 
