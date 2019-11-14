@@ -56,7 +56,7 @@ window.onload = () => {
 
 function startGame() {
     const allUnits = [
-    new Unit("A-10-Thunderbolt", "A-10.jpg", 120, "AGM-65 Maverick", 20),
+    new Unit("Thunderbolt", "A-10.jpg", 120, "AGM-65 Maverick", 20),
     new Unit("F-18", "F-18.jpg", 150, "AGM-88 HARM", 30), 
     new Unit("F-22", "F-22.jpeg", 200, "AIM-120C", 60), 
     new Unit("Space_cat", "spaceCat.jpg", 300, "space-bite", 100)
@@ -82,17 +82,14 @@ function userInteraction (text) {
 function creatAvatarBox (unit) {
     let unitElem = $(`<div class="avatar-box"></div>`);
     let nameDiv = $(`<div class="avatar-name"></div>`);
-    let weaponDiv = $(`<div class="avatar-weapon"></div>`);
     let healthDiv = $(`<div class="avatar-health"></div>`);
     unit.unitElem = unitElem;
     unitElem.appendTo('#game_container');
     unitElem.append(nameDiv );
-    unitElem.append(`<img src="assets/images/${unit.avatarImage}" width="100" height="100"/>`);
-    unitElem.append(weaponDiv);
+    unitElem.append(`<img src="assets/images/${unit.avatarImage}" width="110" height="130"/>`);
     unitElem.append(healthDiv);
     nameDiv.text(`${unit.name}`);
-    weaponDiv.text(`weapon: ${unit.weapon}`);
-    healthDiv.text(`health: ${unit.health}`);
+    healthDiv.text(`${unit.health} points`);
     return unitElem;
 }
 
