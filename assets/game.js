@@ -4,8 +4,9 @@ class Round {
         this.enemies = enemies;
         this.defender = null;
         $('#your_char').append(character.unitElem);
-        for (let unit of enemies) { $('#enemies').append(unit.unitElem); }
-        let choseEnemy = $('<h2></h2>');
+        for (let unit of enemies) {
+            $('#enemies').append(unit.unitElem);
+        }
         userInteraction("Click to select an enemy!")
     }
 
@@ -22,7 +23,7 @@ class Round {
 
     handleAttack() {
         userInteraction("points");
-        this.character.health -= this.defender.attackPoints;
+        this.character.health -= this.defender.attackPoints / 10;
         this.defender.health -= this.character.attackPoints;
         if (this.character.health <= 0) {
             this.character.unitElem.remove();
@@ -39,8 +40,9 @@ class Round {
 }
 
 class Unit {
-    constructor(name, health, weapon, points) {
+    constructor(name, image, health, weapon, points) {
         this.name = name;
+        this.avatarImage = image;
         this.health = health;
         this.weapon = weapon;
         this.attackPoints = points;
@@ -48,21 +50,21 @@ class Unit {
 }
 
 let round = null;
-
 window.onload = () => {
     startGame();
 };
 
 function startGame() {
-    const allUnits = [new Unit("A-10-Thunderbolt", 120, "AGM-65 Maverick", 50),
-    new Unit("F-18", 150, "AGM-88 HARM", 100), new Unit("F-22", 200, "AIM-120C", 150), new Unit("space-cat", 500, "space-bite", 250)];
+    const allUnits = [
+    new Unit("A-10-Thunderbolt", "A-10.jpg", 120, "AGM-65 Maverick", 20),
+    new Unit("F-18", "F-18.jpg", 150, "AGM-88 HARM", 30), 
+    new Unit("F-22", "F-22.jpeg", 200, "AIM-120C", 60), 
+    new Unit("Space_cat", "spaceCat.jpg", 300, "space-bite", 100)
+];
 
     for (let unit of allUnits) {
-        let unitElem = $(`<div id='${unit.name}'></div>`);
-        unit.unitElem = unitElem;
-        unitElem.appendTo('#game_container');
-        unitElem.text(`${unit.name}`);
-        unitElem.click(function () {
+        let unitElem = creatAvatarBox(unit);
+         unitElem.click(function () {
             if (!round) {
                 round = new Round(unit, allUnits.filter(other => other !== unit));
                 return;
@@ -75,5 +77,22 @@ function startGame() {
 
 function userInteraction (text) {
     $("#text").text(text);
+}
+
+function creatAvatarBox (unit) {
+    let unitElem = $(`<div class="avatar-box"></div>`);
+    let nameDiv = $(`<div class="avatar-name"></div>`);
+    let weaponDiv = $(`<div class="avatar-weapon"></div>`);
+    let healthDiv = $(`<div class="avatar-health"></div>`);
+    unit.unitElem = unitElem;
+    unitElem.appendTo('#game_container');
+    unitElem.append(nameDiv );
+    unitElem.append(`<img src="assets/images/${unit.avatarImage}" width="100" height="100"/>`);
+    unitElem.append(weaponDiv);
+    unitElem.append(healthDiv);
+    nameDiv.text(`${unit.name}`);
+    weaponDiv.text(`weapon: ${unit.weapon}`);
+    healthDiv.text(`health: ${unit.health}`);
+    return unitElem;
 }
 
