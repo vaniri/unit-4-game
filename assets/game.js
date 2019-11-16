@@ -12,7 +12,7 @@ class Round {
 
     handleUnitClick(unit) {
         if (unit == this.character) {
-            userInteraction("dumb!");
+            userInteraction("Don't attack yourself!");
         } else if (!this.defender) {
             this.defender = unit;
             $("#defender").append(unit.unitElem);
@@ -31,16 +31,17 @@ class Round {
         this.character.health -= this.defender.attackPower / 10;
         this.defender.health -= this.character.attackPower;
         this.character.unitElem.find('.avatar-health').text(`${this.character.health} points`);
-        this.defender.unitElem.find('.avatar-health').text(`${this.character.health} points`);
+        this.defender.unitElem.find('.avatar-health').text(`${this.defender.health} points`);
         if (this.character.health <= 0) {
             this.character.unitElem.remove();
+            userInteraction("The universe doesn't forget its heroes!");
         } else if (this.defender.health <= 0) {
             this.enemies = this.enemies.filter(enem => enem !== this.defender);
             this.defender.unitElem.remove();
             this.defender = null;
             if (this.enemies.length !== 0) {
                 $('#fight-box').remove();
-                userInteraction("Choose new enemy");
+                userInteraction("Choose new enemy!");
             } else {
                 $('#fight-box').remove();
                 userInteraction("You won!");
