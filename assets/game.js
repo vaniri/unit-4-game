@@ -34,6 +34,7 @@ class Round {
         this.defender.unitElem.find('.avatar-health').text(`${this.defender.health} points`);
         if (this.character.health <= 0) {
             this.character.unitElem.remove();
+            $('#fight-box').remove();
             userInteraction("The universe doesn't forget its heroes!");
         } else if (this.defender.health <= 0) {
             this.enemies = this.enemies.filter(enem => enem !== this.defender);
@@ -44,7 +45,7 @@ class Round {
                 userInteraction("Choose new enemy!");
             } else {
                 $('#fight-box').remove();
-                userInteraction("You won!");
+                userInteraction("You are a hero of the Universe");
             }
         }
     }
@@ -86,10 +87,8 @@ function startGame() {
         let unitElem = creatAvatarBox(unit);
         unitElem.click(function () {
             if (!round) {
-                round = new Round(
-                    unit,
-                    allUnits.filter(other => other !== unit)
-                );
+                round = new Round(unit,
+                allUnits.filter(other => other !== unit));
                 return;
             }
             userInteraction("Let's fight! Click to the enemy icon for attack");
@@ -108,10 +107,18 @@ function creatAvatarBox(unit) {
     let healthDiv = $(`<div class="avatar-health"></div>`);
     unit.unitElem = unitElem;
     unitElem.appendTo(gameContainer);
-    unitElem.append(`<img src="assets/images/${unit.avatarImage}" width="110" height="130"/>`);
+    unitElem.append(`<img src="assets/images/${unit.avatarImage}"/>`);
     unitElem.append(nameDiv);
     unitElem.append(healthDiv);
     nameDiv.text(`${unit.name}`);
     healthDiv.text(`${unit.health} points`);
     return unitElem;
 }
+
+// $('#enemies').ready(function(){
+//     $("button").click(function(){
+//       $("#enemies").animate({
+//         opacity: '0.5',
+//       });
+//     });
+//   });
