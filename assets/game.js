@@ -30,8 +30,8 @@ class Round {
         userInteraction("");
         this.character.health -= this.defender.attackPower / 10;
         this.defender.health -= this.character.attackPower;
-        this.character.unitElem.find('.avatar-health').text(`${this.character.health} points`);
-        this.defender.unitElem.find('.avatar-health').text(`${this.defender.health} points`);
+        this.character.unitElem.find('.avatar-health').text(`${Math.max(this.character.health, 0)} points`);
+        this.defender.unitElem.find('.avatar-health').text(`${Math.max(this.defender.health, 0)} points`);
         if (this.character.health <= 0) {
             this.character.unitElem.remove();
             $('#fight-box').remove();
