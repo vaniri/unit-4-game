@@ -70,12 +70,20 @@ body {
   padding: 1vw;
   text-align: justify;
 }
+#others-char{
+  display: flex;
+  flex-direction: row;
+}
 
 #defender {
   display: flex;
   flex-direction: row;
 }
 
+#enemies {
+  position: absolute;
+  right: 0;
+}
 .avatar-box:hover {
     background-color: green;
     cursor: pointer;
