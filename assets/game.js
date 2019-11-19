@@ -75,7 +75,7 @@ window.onload = () => {
 
 function startGame() {
     userInteraction("Choose your avatar!");
-    gameContainer.css('background-image', 'url("assets/images/mainBack.jpg")');
+    gameContainer.css('background-image', 'url("assets/images/landscape-1328858_1920.jpg")');
     const allUnits = [
         new Unit("A-10", "close air support aircraft", "a-10.jpg", 120, "AGM-65 Maverick", "air-to-surface guided missile", 20, 40),
         new Unit("F/A-18", "multirole aircraft", "F-18.jpg", 150, "AGM-88 HARM", "anti-radiation missile", 30, 50),

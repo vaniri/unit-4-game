@@ -7,7 +7,8 @@ html, body {
 
 body {
   background-color: black;
-  font-family: "Lato", "Open Sans", "Helvetica Neue";
+  font-family: "Tomorrow", "Open Sans", "Helvetica Neue";
+  font-weight: 200;
 }
 
 #game-container {
@@ -21,9 +22,8 @@ body {
 }
 
 .avatar-box {
-  background-color:  #403f46;
-  border: solid 0.1vw #cc1313;
-  border-style: double;
+  border: solid 0.1vw #C0C0C0;
+  outline: solid 0.2vw #cc1313;
   display: inline-block;
   width: 8.6vw;
   height: 15vw;
@@ -37,8 +37,11 @@ body {
 }
 
 .avatar-name {
-  color: white;
-  font-size: 1vw;
+  background-color: #C0C0C0;
+  font-family: "Trade Winds", "Open Sans", "Helvetica Neue";
+  border-radius: 10px;
+  color: black;
+  font-size: 0.9vw;
   margin: 0.4vw;
   padding: 0.4vw;
 }
@@ -46,7 +49,7 @@ body {
 .avatar-health {
   background-color: #cc1313;
   border-radius: 10px;
-  color: white;
+  color: #C0C0C0;
   font-size: 1vw;
   margin: 0.4vw;
   padding: 0.4vw;
@@ -62,7 +65,7 @@ body {
 }
 
 #fight-box {
-  color: white;;
+  color: #C0C0C0;
   width: 21vw;
   padding: 1vw;
   text-align: justify;
@@ -74,7 +77,7 @@ body {
 }
 
 .avatar-box:hover {
-    background-color: orange;
+    background-color: green;
     cursor: pointer;
     transform: scale(1.2);
   }
