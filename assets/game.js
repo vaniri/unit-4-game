@@ -80,7 +80,7 @@ function startGame() {
         new Unit("A-10", "close air support aircraft", "a-10.jpg", 120, "AGM-65 Maverick", "air-to-surface guided missile", 20, 40),
         new Unit("F/A-18", "multirole aircraft", "F-18.jpg", 150, "AGM-88 HARM", "anti-radiation missile", 30, 50),
         new Unit("F-22", "air superiority fighter", "F-22.jpeg", 200, "AIM-120C", "advanced medium range air-to-air missile", 60, 80),
-        new Unit("Space_cat", "dangerous and powerful creature", "spaceCat.jpg", 300, "space-paw", "heavy and devastating", 100, 120)
+        new Unit("SpaceCat", "dangerous and powerful creature", "spaceCat.jpg", 300, "space-paw", "heavy and devastating", 100, 120)
     ];
 
     for (let unit of allUnits) {
@@ -114,11 +114,3 @@ function creatAvatarBox(unit) {
     healthDiv.text(`${unit.health} points`);
     return unitElem;
 }
-
-// $('#enemies').ready(function(){
-//     $("button").click(function(){
-//       $("#enemies").animate({
-//         opacity: '0.5',
-//       });
-//     });
-//   });
