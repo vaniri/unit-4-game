@@ -35,7 +35,9 @@ class Round {
         if (this.character.health <= 0) {
             this.character.unitElem.remove();
             $('#fight-box').remove();
-            userInteraction("The universe doesn't forget its heroes!");
+            userInteraction("Game over! The universe doesn't forget its heroes!");
+            $(".avatar-box").remove();
+            setTimeout(() => startGame(), 3000);
         } else if (this.defender.health <= 0) {
             this.enemies = this.enemies.filter(enem => enem !== this.defender);
             this.defender.unitElem.remove();
@@ -46,6 +48,8 @@ class Round {
             } else {
                 $('#fight-box').remove();
                 userInteraction("You are a hero of the Universe");
+                $(".avatar-box").remove();
+                setTimeout(() => startGame(), 3000);
             }
         }
     }
